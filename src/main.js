@@ -12,15 +12,21 @@ const lightbox = new SimpleLightbox('.gallery-link', {
   captionsData: 'alt',
   captionDelay: 250,
 });
+
 const searchForm = document.querySelector('.form-search-img');
 const input = document.querySelector('.search-input');
 const loader = document.querySelector('.loader');
 const listResults = document.querySelector('.list-results');
+const loadMoreBtn = document.querySelector('.load-more');
+
+let pageNumber = 1;
 
 function formHandler(event) {
   event.preventDefault();
 
-  if (!input.value.trim()) {
+  const request = input.value.trim();
+
+  if (!request) {
     return iziToast.warning({
       message: 'The field cannot be empty!',
       position: 'topRight',
@@ -30,26 +36,31 @@ function formHandler(event) {
   loader.classList.toggle('is-hidden');
   listResults.innerHTML = '';
 
-    fetchImg(input.value.trim())
-      .then(data => {
-        event.target.reset();
+  fetchImg(request, pageNumber)
+    .then(({ data }) => {
+      event.target.reset();
 
-        if (data.hits.length === 0) {
-          iziToast.info({
-            message:
-              'Sorry, there are no images matching your search query. Please try again!',
-            position: 'topRight',
-          });
-        }
+      if (data.hits.length === 0) {
+        iziToast.info({
+          message:
+            'Sorry, there are no images matching your search query. Please try again!',
+          position: 'topRight',
+        });
+      }
 
-        createGallery(data.hits);
+      createGallery(data.hits);
 
-        lightbox.refresh();
-      })
-      .catch(error => console.log(error))
-      .finally(() => {
-        loader.classList.toggle('is-hidden');
-      });
+      lightbox.refresh();
+    })
+    .catch(error => console.log(error))
+    .finally(() => {
+      loader.classList.toggle('is-hidden');
+    });
+}
+
+function pageNumberIncrement() {
+  pageNumber += 1;
 }
 
 searchForm.addEventListener('submit', formHandler);
+loadMoreBtn.addEventListener('click', pageNumberIncrement);

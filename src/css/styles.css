@@ -59,7 +59,8 @@
   }
 }
 
-.search-btn {
+.search-btn,
+.load-more {
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
   font-size: 16px;
@@ -67,6 +68,7 @@
   letter-spacing: 0.04em;
   color: #fff;
 
+  display: block;
   border-color: transparent;
   border-radius: 8px;
   padding: 8px 16px;
@@ -77,6 +79,11 @@
   &:hover {
     background-color: #6c8cff;
   }
+}
+
+.load-more {
+  width: 125px;
+  margin: 0 auto;
 }
 
 .list-results {
@@ -113,7 +120,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  padding: 4px 20px;
+  padding: 4px 20px 0;
 }
 
 .item-info {

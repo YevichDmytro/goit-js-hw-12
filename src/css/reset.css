@@ -2,6 +2,7 @@
 ::after,
 ::before {
   box-sizing: border-box;
+  /* outline: 1px solid red; */
 }
 
 h1,
@@ -37,6 +38,10 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
+}
+
+section {
+  padding-bottom: 50px;
 }
 
 .loader.is-hidden {
