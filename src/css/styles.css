@@ -29,7 +29,7 @@
 }
 
 .form-search-img {
-  margin: 36px auto 0;
+  margin: 32px auto;
   width: fit-content;
   display: flex;
   gap: 8px;
@@ -59,8 +59,7 @@
   }
 }
 
-.search-btn,
-.load-more {
+.form-button {
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
   font-size: 16px;
@@ -72,7 +71,6 @@
   border-color: transparent;
   border-radius: 8px;
   padding: 8px 16px;
-  width: 91px;
   height: 40px;
   background-color: #4e75ff;
 
@@ -81,9 +79,15 @@
   }
 }
 
-.load-more {
+.search-btn {
+  width: 91px;
+}
+
+.load-more-btn {
   width: 125px;
-  margin: 0 auto;
+  position: absolute;
+  transform: translate(-50%, -110%);
+  left: 50%;
 }
 
 .list-results {
@@ -91,7 +95,7 @@
   justify-content: start;
   flex-wrap: wrap;
   gap: 24px;
-  padding: 50px 0;
+  margin-bottom: 32px;
 }
 
 .item-results {
@@ -158,8 +162,7 @@
 
   position: relative;
   left: 50%;
-  margin-top: 32px;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
 }
 
 .loader:after {

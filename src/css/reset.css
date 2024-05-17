@@ -2,7 +2,6 @@
 ::after,
 ::before {
   box-sizing: border-box;
-  /* outline: 1px solid red; */
 }
 
 h1,
@@ -44,6 +43,8 @@ section {
   padding-bottom: 50px;
 }
 
-.loader.is-hidden {
+.loader.is-hidden,
+.load-more-btn.is-hidden,
+.list-results.is-hidden {
   display: none;
 }

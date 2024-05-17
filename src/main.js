@@ -58,18 +58,13 @@ function formHandler(event) {
     .catch(error => console.log(error))
     .finally(() => {
       loader.classList.toggle('is-hidden');
+      loadMoreBtn.classList.toggle('is-hidden');
     });
 }
 
 function pageNumberIncrement() {
-  if (pageNumber === 1) {
-    return iziToast.error({
-      message: 'You can`t load more images!',
-      position: 'topRight',
-    });
-  }
-
   loader.classList.toggle('is-hidden');
+  loadMoreBtn.classList.toggle('is-hidden');
 
   fetchImg(request, pageNumber)
     .then(({ data }) => {
@@ -81,6 +76,7 @@ function pageNumberIncrement() {
     .catch(error => console.log(error))
     .finally(() => {
       loader.classList.toggle('is-hidden');
+      loadMoreBtn.classList.toggle('is-hidden');
     });
 }
 
