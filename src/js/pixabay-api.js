@@ -17,7 +17,5 @@ export async function fetchImg(q, page) {
 
   axios.defaults.baseURL = `https://pixabay.com/api/`;
 
-  const response = await axios(`?${searchParams}`);
-
-  return response;
+  return await axios(`?${searchParams}`);
 }

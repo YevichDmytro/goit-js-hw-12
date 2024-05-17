@@ -20,11 +20,13 @@ const listResults = document.querySelector('.list-results');
 const loadMoreBtn = document.querySelector('.load-more');
 
 let pageNumber = 1;
+let request = '';
 
 function formHandler(event) {
   event.preventDefault();
 
-  const request = input.value.trim();
+  pageNumber = 1;
+  request = input.value.trim();
 
   if (!request) {
     return iziToast.warning({
@@ -41,15 +43,16 @@ function formHandler(event) {
       event.target.reset();
 
       if (data.hits.length === 0) {
-        iziToast.info({
+        return iziToast.info({
           message:
             'Sorry, there are no images matching your search query. Please try again!',
           position: 'topRight',
         });
       }
 
-      createGallery(data.hits);
+      pageNumber += 1;
 
+      createGallery(data.hits);
       lightbox.refresh();
     })
     .catch(error => console.log(error))
@@ -59,7 +62,26 @@ function formHandler(event) {
 }
 
 function pageNumberIncrement() {
-  pageNumber += 1;
+  if (pageNumber === 1) {
+    return iziToast.error({
+      message: 'You can`t load more images!',
+      position: 'topRight',
+    });
+  }
+
+  loader.classList.toggle('is-hidden');
+
+  fetchImg(request, pageNumber)
+    .then(({ data }) => {
+      createGallery(data.hits);
+      lightbox.refresh();
+
+      pageNumber += 1;
+    })
+    .catch(error => console.log(error))
+    .finally(() => {
+      loader.classList.toggle('is-hidden');
+    });
 }
 
 searchForm.addEventListener('submit', formHandler);

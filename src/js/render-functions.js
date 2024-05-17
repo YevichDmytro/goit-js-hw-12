@@ -1,5 +1,7 @@
 'use strict';
 
+const resultListElement = document.querySelector('.list-results');
+
 export function createGallery(hitsArray) {
   const gallery = hitsArray
     .map(
@@ -40,5 +42,5 @@ export function createGallery(hitsArray) {
     )
     .join('');
 
-  document.querySelector('.list-results').innerHTML = gallery;
+  resultListElement.insertAdjacentHTML('beforeend', gallery);
 }
