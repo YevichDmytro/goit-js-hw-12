@@ -20,8 +20,8 @@ const loadMoreBtn = document.querySelector('.load-more-btn');
 const loader = document.querySelector('.loader');
 
 let request = '';
-let pageNumber = 1;
 let itemsPerPage = 15;
+let pageNumber = 1;
 
 function getResponseFunc(request, itemsPerPage, pageNumber) {
   return getRequest(request, itemsPerPage, pageNumber)
