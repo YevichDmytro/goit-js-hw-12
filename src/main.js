@@ -21,7 +21,7 @@ const loader = document.querySelector('.loader');
 
 let request = '';
 let pageNumber = 1;
-let itemsPerPage = 150;
+let itemsPerPage = 15;
 
 function getResponseFunc(request, itemsPerPage, pageNumber) {
   return getRequest(request, itemsPerPage, pageNumber)
