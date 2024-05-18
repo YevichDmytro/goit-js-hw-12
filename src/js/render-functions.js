@@ -1,9 +1,7 @@
 'use strict';
 
-const resultListElement = document.querySelector('.list-results');
-
-export function createGallery(hitsArray) {
-  const gallery = hitsArray
+export function createGallery(hits) {
+  const gallery = hits
     .map(
       ({
         largeImageURL,
@@ -42,5 +40,7 @@ export function createGallery(hitsArray) {
     )
     .join('');
 
-  resultListElement.insertAdjacentHTML('beforeend', gallery);
+  document
+    .querySelector('.list-results')
+    .insertAdjacentHTML('beforeend', gallery);
 }

@@ -85,8 +85,8 @@
 
 .load-more-btn {
   width: 125px;
-  position: absolute;
-  transform: translate(-50%, -110%);
+  position: relative;
+  transform: translateX(-50%);
   left: 50%;
 }
 
@@ -160,9 +160,9 @@
   border-radius: 50%;
   animation: roll 1s ease-in-out infinite alternate;
 
-  position: relative;
+  position: absolute;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -10%);
 }
 
 .loader:after {
